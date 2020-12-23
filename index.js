@@ -13,13 +13,13 @@ const checkSite = () => {
       const hasBernaDoodle = body.includes('bernadoodle') || body.includes('Bernadoodle') || body.includes('Bernedoodle') || body.includes('bernedoodle');
       const hasOtis = body.includes('Otis');
 
-      if (hasBernaDoodle && hasOtis || numberOfChecks ===4) {
+      if (hasBernaDoodle && hasOtis) {
 
         console.log('Turkey popped!')
 
         // in case of unexpected reboot, dont send the email again.
-        // this will prevent the email being sent right after being booted up.
-        if (true) {
+        // this will prevent the email being sent right after being booted up. Buffer the first 5 checks.
+        if (numberOfChecks > 5) {
         // Email peopple
 
         // create mail transporter
@@ -33,11 +33,12 @@ const checkSite = () => {
 
         let mailOptions = {
           from: "dustinandmeguire@gmail.com",
-          to: "ktmock13@gmail.com",
-          subject: `Hello From AWS`,
+          to: "kevin.gailsdoodles@gmail.com",
+          bcc:"ktmock13@gmail.com,dcbrout@gmail.com,meguire.broersma@gmail.com",
+          subject: `bernadoodle litter reserve`,
           text: `Hello Gail’s Doodles!
 
-We would like to take home one of new puppies in the newly posted Bernedoodle litter! We are very excited and hope mama and puppies are doing well!
+We would like to take home one of new puppies in the newly posted Bernadoodle litter! We are very excited and hope mama and puppies are doing well!
 Please let us know if we responded in time and what the next steps are. We can send the deposit ASAP.
                     
 Many thanks,
