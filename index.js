@@ -19,7 +19,7 @@ const checkSite = () => {
 
         // in case of unexpected reboot, dont send the email again.
         // this will prevent the email being sent right after being booted up.
-        if (numberOfChecks > 5) {
+        if (true) {
         // Email peopple
 
         // create mail transporter
