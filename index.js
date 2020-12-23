@@ -3,6 +3,7 @@ const nodemailer = require("nodemailer");
 
 let intervalID = 0;
 
+let numberOfChecks = 0;
 
 const checkSite = () => {
   fetch('https://gailsdoodles.com/current-litters')
@@ -13,6 +14,12 @@ const checkSite = () => {
       const hasOtis = body.includes('Otis');
 
       if (hasBernaDoodle && hasOtis) {
+
+        console.log('Turkey popped!')
+
+        // in case of unexpected reboot, dont send the email again.
+        // this will prevent the email being sent right after being booted up.
+        if (numberOfChecks > 5) {
         // Email peopple
 
         // create mail transporter
@@ -45,9 +52,12 @@ Meguire & Dustin`
           }
         });
         clearInterval(intervalID);
+        }
+        
       } else {
+        numberOfChecks++;
         // still in the oven
-        console.log('still in the oven')
+        console.log(`still in the oven ${numberOfChecks}`)
       }
     });
   }
