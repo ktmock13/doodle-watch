@@ -13,7 +13,7 @@ const checkSite = () => {
       const hasBernaDoodle = body.includes('bernadoodle') || body.includes('Bernadoodle') || body.includes('Bernedoodle') || body.includes('bernedoodle');
       const hasOtis = body.includes('Otis');
 
-      if (hasBernaDoodle && hasOtis) {
+      if (hasBernaDoodle && hasOtis || numberOfChecks ===4) {
 
         console.log('Turkey popped!')
 
@@ -34,8 +34,7 @@ const checkSite = () => {
         let mailOptions = {
           from: "dustinandmeguire@gmail.com",
           to: "ktmock13@gmail.com",
-          bcc:"ktmock13@gmail.com,meguire.broersma@gmail.com,dcbrout@gmail.com",
-          subject: `Test - Pls ignore`,
+          subject: `Hello From AWS`,
           text: `Hello Gail’s Doodles!
 
 We would like to take home one of new puppies in the newly posted Bernedoodle litter! We are very excited and hope mama and puppies are doing well!
